@@ -1,0 +1,45 @@
+
+
+
+export function getIndianStates() {
+
+    return [
+        { value: 'Andaman & Nicobar Islands(35)' ,name: 'AN Andaman & Nicobar Islands 35'},
+        { value: 'Andhra Pradesh(28)' ,name: 'AP Andhra Pradesh 28'},
+        { value: 'Andhra Pradesh New(37)' ,name: 'AP Andhra Pradesh(new) 37'},
+        { value: 'Arunachal Pradesh(12)' ,name: 'AR ArunachalPradesh 12'},
+        { value: 'Assam(18)' ,name: 'AS Assam 18'},
+        { value: 'Bihar(10)' ,name: 'BH Bihar 10'},
+        { value: 'Chandigarh(04)' ,name: 'CH Chandigarh 04'},
+        { value: 'Chattisgarh(22)' ,name: 'CT Chattisgarh 22'},
+        { value: 'Dadra & Nagar Haveli(26)' ,name: 'DN Dadra & Nagar Haveli 26'},
+        { value: 'Daman & Diu(25)' ,name: 'DD Daman & Diu 25'},
+        { value: 'Delhi(07)' ,name: 'DL DElhi 07'},
+        { value: 'Goa(30)' ,name: 'GD Goa 30'},
+        { value: 'Gujarat(24)' ,name: 'GA Gujarat 24'},
+        { value: 'Haryana(06)' ,name: 'HR Haryana 06'},
+        { value: 'Himachal Pradesh(02)' ,name: 'HP HimachalPradesh 02'},
+        { value: 'Jammu & Kashmir(01)' ,name: 'JK Jammu&Kashmir 01'},
+        { value: 'Jharkhand(20)' ,name: 'JH Jarkhand 20'},
+        { value: 'Karnataka(29)' ,name: 'KA Karnataka 29'},
+        { value: 'Kerala(32)' ,name: 'KL Kerala 32'},
+        { value: 'Lakshadweep Islands(31)' ,name: 'LD LakshadweepIslands 31'},
+        { value: 'Madhya Pradesh(23)' ,name: 'MP MadhyaPradesh 23'},
+        { value: 'Maharashtra(27)' ,name: 'MH Maharashtra 27'},
+        { value: 'Manipur(14)' ,name: 'MN Manipur 14'},
+        { value: 'Meghalaya(17)' ,name: 'ME Meghalaya 17'},
+        { value: 'Mizoram(15)' ,name: 'MI Mizoram 15'},
+        { value: 'Nagaland(13)' ,name: 'NL Nagaland 13'},
+        { value: 'Odisha(21)' ,name: 'OR Odisha 21'},
+        { value: 'Pondicherry(34)' ,name: 'PY Pondicherry 34'},
+        { value: 'Punjab(03)' ,name: 'PB Punjab 03'},
+        { value: 'Rajasthan(08)' ,name: 'RJ RAjasthan 08'},
+        { value: 'Sikkim(11)' ,name: 'SK Sikkim 11'},
+        { value: 'TamilNadu(33)' ,name: 'TN TamilNadu 33'},
+        { value: 'Telangana(36)' ,name: 'TS Telangana 36'},
+        { value: 'Tripura(16)' ,name: 'TR Tripura 16'},
+        { value: 'Uttar Pradesh(09)' ,name: 'UP UttarPradesh 09'},
+        { value: 'Uttarakhand(05)' ,name: 'UT Uttarakhand'},
+        { value: 'West Bengal(19)' ,name: 'WB WestBengal 19'},
+    ];
+}

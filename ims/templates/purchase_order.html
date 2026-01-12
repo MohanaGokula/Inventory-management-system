@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Information about purchase order</title>
+        <style>
+            table {
+                border-collapse: collapse; 
+            }
+            th, td {
+                /* border: 1px solid black;  */
+                vertical-align: top;
+                padding-top: 2px;
+                padding-left: 2px;
+                
+            }
+            body{
+                font-family: Arial,sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        {% load humanize %}
+        <center><h2>PURCHASE ORDER</h2></center>
+        <table border="1px">
+            
+            <tr>
+                {%if c_logo %}
+                <td rowspan="4" style="width: 21%; border-right: none;">
+                            <img src="{{ c_logo.path }}" alt="logo"> 
+                </td>
+                <td rowspan="4" style="border-left: none;">
+                    <p>Invoice To<br><b>{{po.entity_company_id.entity_name}}</b><br>
+                    {{po.entity_company_id.address_1}}<br>
+                    {{po.entity_company_id.address_2}}<br>{{po.entity_company_id.address_3}} - {{po.entity_company_id.pincode}}
+                    <br>GSTIN/UIN:{{po.entity_company_id.gst_no}}<br>State Name:{{c_state}},Code:{{c_code}}<br>
+                    E-mail:{{po.entity_company_id.email_id}}</p>
+                </td>
+                {% else %}
+                <td rowspan="4" style="width: 21%; border-right: none;"> </td>
+                <td rowspan="4" style="border-left: none;">
+                    <p>Invoice To<br><b>{{po.entity_company_id.entity_name}}</b><br>
+                    {{po.entity_company_id.address_1}}<br>
+                    {{po.entity_company_id.address_2}}<br>{{po.entity_company_id.address_3}} - {{po.entity_company_id.pincode}}
+                    <br>GSTIN/UIN:{{po.entity_company_id.gst_no}}<br>State Name:{{c_state}},Code:{{c_code}}<br>
+                    E-mail:{{po.entity_company_id.email_id}}</p>
+                </td>
+                {% endif %}
+                <td>Purchase Order No.<br><b>{{po.order_no}}</b></td>
+                    <td>Dated:<br><b>{{po.order_date|date:"d-M-y"}}</b></td>
+            </tr>
+            <tr><td>Quotation Number and Date.<br><b>{{po.quotation_no}} {{ po.quotation_date | date:"d-M-y" }}
+            </b></td>
+                <td>Modes/Terms of Payment<br><b>{{po.pay_terms}}</b></td></tr>
+            
+            <tr><td rowspan="2">Dispatched through<br><b>By Road</b></td>
+                <td  rowpan="2">Indent Number<br><b>{{po.indent_no}}</b></td>
+            </tr>
+            <td>Indent Date<br><b>{{po.indent_date | date:"d-M-y"}}</b></td>
+
+            </tr>
+            <tr>
+                <td rowspan="3" colspan="2">
+                    <div class="desc">
+                        <p class="name">Supplier (Bill from)<br><b>{{po.entity_id.entity_name}}</b><br>
+                        {{po.entity_id.address_1}}<br>
+                        {{po.entity_id.address_2}}<br>{{po.entity_id.address_3}} - {{po.entity_id.pincode}}
+                        <br>GSTIN/UIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{po.entity_id.gst_no}}
+                        <br>PAN/IT No:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{po.entity_id.pan_no}}<br>
+                        State Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{s_state}},Code:{{s_code}}
+                    </div>
+                </td>
+                    <td style="border-bottom: 2px solid white"> </td>
+                    <td>Destination<br><b>{{po.entity_consignee_id.entity_name}}</b></td>
+                    
+                    <tr> <td style="border-bottom: 2px solid white;border-top: 2px solid white;border-right: 2px solid white"> </td> 
+                        <td  style="border-bottom: 2px solid white;border-left: 2px solid white"> </td></tr>
+                    <tr style="border-top: 2px solid white;"> 
+                        <td style="border-right: 2px solid white;border-top: 2px solid white">
+                            Mode of Delivery<br><b>{{po.transport_mode}}</b></td>
+                    <td style="border-left: 2px solid white;border-top: 2px solid white"> </td></tr>
+            </tr>
+           
+            <tr colspan="4">
+                <td rowspan="3" colspan="2">
+                    <div class="desc">
+                        <p class="name">Consignee(ship to)<br><b>{{po.entity_consignee_id.entity_name}}</b><br>
+                        {{po.entity_consignee_id.address_1}}<br>
+                        {{po.entity_consignee_id.address_2}}<br>{{po.entity_consignee_id.address_3}} - 
+                        {{po.entity_consignee_id.pincode}}
+                        <br>GSTIN/UIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{po.entity_consignee_id.gst_no}}<br>
+                        PAN/IT No:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{po.entity_consignee_id.pan_no}}<br>
+                        State Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{p_state}},Code:{{p_code}}</p>
+                    </div>
+                </td>
+                <td colspan="2" style="vertical-align: bottom;">TIME: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{po.order_time}}</b></td>
+                <tr><td colspan="2">Sales Person<br><b>DIRECT SALES</b></td></tr>
+                <tr><td colspan="2"> </td></tr>
+            </tr>
+        </table>
+        <table style="width: 100%;">
+            {% if po.entity_id.state == "TamilNadu(33)" %}
+            <tr style="border: 1px solid black;">
+                <td style="width: 20px;text-align: center;">Sl<br>No.</td>
+                <td style="width: 170px;text-align: center;">Description of Goods</td>
+                <td style="width: 55px;text-align: center;">HSN/SAC</td>
+                <td style="width: 45px;text-align: center;">CGST<br>Amount</td>
+                <td style="width: 45px;text-align: center;">SGST<br>Amount</td>
+                <td style="text-align: center;">Due on</td>
+                <td style="text-align: center;">Quantity</td>
+                <td style="text-align: center;">Rate</td>
+                <td style="width: 35px;text-align: center;">Per</td>
+                <td style="width: 90px;text-align: center;">Amount</td>
+            </tr>        
+            {% for po_detail in po_details %}
+            <tr>
+                <td style="border-right:1px solid black;border-left:1px solid black">{{ forloop.counter }}</td>
+                <td style="border-right:1px solid black"><b>{{ po_detail.product.name }}</b></td>
+                <td style="border-right:1px solid black">{{po_detail.product.hsn_sac_code}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.tax1_amount | floatformat:2 | intcomma}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.tax2_amount | floatformat:2 | intcomma}}</td>
+                <td style="text-align: center;border-right:1px solid black;border-left:1px solid black;">{{po.validity_date|date:"d-M-y"}}</td>
+                <td style="text-align: right;padding:2px;border-right:1px solid black;border-left:1px solid black;"><b>{{po_detail.quantity | floatformat:3 | intcomma}} {{po_detail.product.unit.symbol}}</b></td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.rate | floatformat:2 | intcomma}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.product.unit.symbol}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;"><b>{{po_detail.amount | floatformat:2 | intcomma}}</b></td>
+            </tr>
+            {% endfor %}
+                <tr style="height: 200px;border-right: 1px solid black;border-left: 1px solid black;">
+                    <td> </td> <td> </td>
+                    <td> </td> <td> </td> 
+                    <td> </td> <td> </td> 
+                    <td> </td>
+                    <td> </td> <td> </td>
+                    <td style="border-top: 1px solid black;text-align: right;padding-right: 2px;">{{amount | floatformat:2 | intcomma}}</td>
+                </tr>
+            
+                    <tr style="border: 1px solid black;">
+                        <td> </td>
+                        <td style="text-align: right;padding-right: 2px;">Total</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td style="text-align: right; padding-right: 2px;">{{quantity | floatformat:3 | intcomma}} {{unit_1}}</td>
+                        <td> </td>
+                        <td> </td>
+                        <td style="text-align: right; padding-right: 2px;"><b>{{t1 | floatformat:2 | intcomma}}</b></td>
+                    </tr>
+            {% else %}
+            <tr style="border: 1px solid black;">
+                <td style="width: 20px;text-align: center;">Sl<br>No.</td>
+                <td style="width: 170px;text-align: center;">Description of Goods</td>
+                <td style="width: 55px;text-align: center;">HSN/SAC</td>
+                <td style="width: 45px;text-align: center;">IGST<br>Amount</td>
+                <td style="text-align: center;">Due on</td>
+                <td style="text-align: center;">Quantity</td>
+                <td style="text-align: center;">Rate</td>
+                <td style="width: 35px;text-align: center;">Per</td>
+                <td colspan="2" style="width: 90px;text-align: center;">Amount</td>
+            </tr>
+            {% for po_detail in po_details %}
+            <tr>
+                <td style="border-right:1px solid black;border-left:1px solid black">{{ forloop.counter }}</td>
+                <td style="border-right:1px solid black"><b>{{ po_detail.product.name }}</b></td>
+                <td style="border-right:1px solid black">{{po_detail.product.hsn_sac_code}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.tax1_amount | floatformat:2 | intcomma}}</td>
+                <td style="text-align: center;border-right:1px solid black;border-left:1px solid black;">{{po.validity_date|date:"d-M-y"}}</td>
+                <td style="text-align: right;padding:2px;border-right:1px solid black;border-left:1px solid black;"><b>{{po_detail.quantity | floatformat:3 | intcomma}} {{po_detail.product.unit.symbol}}</b></td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.rate |floatformat:2 | intcomma}}</td>
+                <td style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;">{{po_detail.product.unit.symbol}}</td>
+                <td colspan="2" style="text-align: right;padding: 2px;border-right:1px solid black;border-left:1px solid black;"><b>{{po_detail.amount | floatformat:2 | intcomma}}</b></td>
+            </tr>
+            {% endfor %}
+            <tr style="height: 200px;border-right: 1px solid black;border-left: 1px solid black;">
+                <td> </td> <td> </td>
+                <td> </td> <td> </td> 
+                <td> </td> <td> </td> 
+                <td> </td>
+                <td> </td>
+                <td colspan="2" style="border-top: 1px solid black;text-align: right;padding-right: 2px;">{{amount | floatformat:2 | intcomma}}</td>
+            </tr>
+            
+                    <tr style="border: 1px solid black;">
+                        <td> </td>
+                        <td style="text-align: right;padding-right: 2px;">Total</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td style="text-align: right; padding-right: 2px;">{{quantity | floatformat:3 | intcomma}} {{unit_1}}</td>
+                        <td> </td>
+                        <td> </td>
+                        <td colspan="2" style="text-align: right;padding-right: 2px;"><b>{{t2 | floatformat:2 | intcomma}}</b></td>
+                    </tr>
+                    {% endif %}
+                <tr style="border: 1px solid black;">
+                    <td colspan="8" style="padding-bottom: 20px;border-right: solid white;">Amount chargable (in words)
+                        <br><b>INR {{word1}}</b>
+                        <p style="padding: 0;margin: 0;"><i>Remarks:</i><br>DELIVERY TO {{po.entity_consignee_id.address_1}}</p>
+                    <p style="padding: 0;margin: 0;">Company's PAN:<b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{po.entity_company_id.pan_no}}</b></p>
+                    </td>
+                    <td colspan=2 style="border-left: solid white;padding-bottom: 60px;text-align: right;padding-right: 2px;">
+                        E. & O.E</td>
+                </tr>
+                <tr style="border:1px solid black;">
+                    <td colspan="5">Customer's Name/Seal and Signature <p>
+                        Contact Number:-
+                    </p></td>
+                    <td colspan="5" style="text-align: right;padding-right:2px ;"><b>for {{po.entity_company_id.entity_name}}</b>
+                    <p>Authorised Signatory</p></td>
+                </tr>
+            </div>
+        </table>
+        <center><p>This is computer Generated Document</p></center>
+    </body>
+</html>

@@ -1,10 +1,3 @@
-Nice 👍 A clean README really helps your GitHub project stand out—especially for internships and job applications.
-
-Below is a **professional, ready-to-use README.md** for an **Inventory Management System**.
-You can directly copy-paste this into GitHub and edit names/tech if needed.
-
----
-
 # 📦 Inventory Management System
 
 ## 📖 Overview
@@ -34,7 +27,6 @@ This system allows users to add, update, delete, and monitor inventory items whi
 * **Database:** MySQL / MongoDB
 * **Tools:** Git, GitHub
 
-> *Update this section based on the exact technologies you used.*
 
 ---
 
@@ -63,12 +55,6 @@ This system allows users to add, update, delete, and monitor inventory items whi
    ```bash
    npm start
    ```
-
----
-
-## 📸 Screenshots
-
-*Add screenshots of your application here to showcase the UI.*
 
 ---
 
